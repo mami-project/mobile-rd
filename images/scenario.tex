@@ -1,0 +1,70 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes.geometric, decorations.markings}
+
+% for double arrows a la chef
+% adapt line thickness and line width, if needed
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white, line width=1.4pt, shorten >= 4.5pt]
+\tikzstyle{innerGray} = [semithick, gray, line width=1.4pt, shorten >= 4.5pt]
+\tikzstyle{innerBlack} = [semithick, black, line width=1.4pt, shorten >= 4.5pt]
+
+\begin{document}
+
+\begin{tikzpicture}[auto, node distance=2cm,>=latex',font=\sffamily]
+  \node (ue) at (0,0) [draw,rectangle] {UE};
+  \node (l) at (2,0) {}; % invisible node
+  \node (l1) at (1.8,0) {}; % invisible node
+  \node (l2) at (2.2,0) {}; % invisible node
+  \node (eb) at (0,-2) [draw,rectangle, minimum width=1.5cm]{eNodeB};
+  \node (sgw) at (0,-3.3) [draw,rectangle, minimum width=1.5cm] {SGW};
+  \node (pgw) at (0,-4.7) [draw,rectangle, minimum width=1.5cm] {PGW};
+  \node (k) at (2,-4.7) {}; % invisible node
+  \node (k1) at (1.8,-4.7) {}; % invisible node
+  \node (k2) at (2.2,-4.7) {}; % invisible node
+  \node (pcef) at (4,-4.7) [draw,rectangle, minimum width=1.5cm] {PCEF};
+  \node (pcrf) at (4,-3.3) [draw,rectangle, minimum width=1.5cm] {PCRF};
+  \node (a) at (-1,-5.6) {}; % invisible node
+  \node (b) at (5,-5.6) {}; % invisible node
+  \node (c) at (0,-5.7) {}; % invisible node
+  \node (d) at (-0.5,-5.5) {}; % invisible node
+  \node (e) at (4.5,-5.5) {}; % invisible node
+
+  \node (app) at (-0.5,-6.5) [draw,rectangle]{App};
+  \node (loa) at (2,-6.5) [draw,rectangle]{Lo App};
+  \node (laa) at (4.5,-6.5) [draw,rectangle]{La App};
+
+
+  \draw[black] (eb) to (sgw);
+  \draw[black] (sgw) to (pgw);
+  \draw[black] (pgw) to (c);
+  \draw[black] (d) to (app);
+  \draw[black] (e) to (laa);
+  \draw[black] (a) to (b);
+
+  \draw[double] (pgw) to (pcef);
+  \draw[double] (pcrf) to (pcef);
+  \draw[dotted] (ue) to (eb);% {RAN} (ran);
+
+  \draw [black,thin,double distance=2pt,double=gray]  (l) to (k);
+  \draw [black,thin,double distance=2pt,double=white] (l1) to (k1);
+  \draw [black,thin,double distance=2pt,double=black] (l2) to (k2);
+  \draw [black,thin,double distance=2pt,double=white] (k1) to (app);
+  \draw [black,thin,double distance=2pt,double=gray]  (k) to (loa);
+  \draw [black,thin,double distance=2pt,double=black] (k2) to (laa);
+
+  \node (tdfs) at (2,-4.7) [draw,rectangle,fill=white] {TDFs};
+  \node (apps) at (2,0) [draw,rectangle,fill=white, minimum width=2cm] {Terminal};
+  \node (sgi) at (0,-1) [draw=white,fill=white]{RAN};
+  \node (sgi) at (0,-5.2) [draw=white,fill=white]{\textsf{SGi}};
+  \node (s1u) at (0,-2.6) [draw=white,fill=white]{\textsf{\small{S1-U}}};
+  \node (s5) at (0,-4) [draw=white,fill=white]{\textsf{S5}};
+
+  % Note: If you have no branches, the 2nd pass is not needed
+\end{tikzpicture}
+
+\end{document}
