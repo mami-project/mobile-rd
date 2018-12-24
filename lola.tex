@@ -1,6 +1,5 @@
 \documentclass[12pt]{article}
 
-
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
@@ -438,12 +437,20 @@ are shown in \reffig{fig:video-10}.
 \section{Conclusions}
 \label{S:4}
 
-The simulations performed for low latency support mechanism in mobile network
-show promising results.  To enable more realistic experimentation based on
-these simulation results, we also produced a first set of experiment
-specifications for 5G testbeds. These specifications have also been implemented
-as a set of VNF and experimentally deployed on the 5TONIC~\cite{5tonic} testbed
-at the premises of the IMDEA Networks Institute in Legan\'es, Madrid.
+The simulations performed around low latency support mechanisms in mobile
+networks show very promising results.  Moving the idea out of the testbed
+requires first of all agreeing among the involved parties (mobile networks and
+applications) on the format and semantics of the core signalling.  A mechanism
+based on Non Queue Building Flows (NQB)~\cite{white-tsvwg-nqb-00} has been
+recently proposed by the authors in the IETF TSV working
+group~\cite{fossati-tsvwg-lola-00}.  This approach has the advantage of
+harmonising the signalling between fixed and mobile access and at the same time
+not precluding the possbility to further experiment with Low Latency Low Loss
+Scalable throughput (L4S)~\cite{ietf-tsvwg-l4s-arch-03}.  This is the
+groundwork needed for a few other standards and dissemination activities which
+include at a minimum: recommendations for endpoint and API developers (for
+example, IETF RTCWEB, W3C WebRTC, M2M-related SDOs), and guidelines for mobile
+network operators -- ideally via GSMA.
 
 \bibliographystyle{abbrv}
 \small
